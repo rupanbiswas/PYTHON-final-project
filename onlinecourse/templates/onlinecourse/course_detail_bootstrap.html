@@ -68,7 +68,7 @@
                 -->
 
                 <!-- A choice submission form example -->
-                <form id="questionform" action="submit" method="post">
+                <form id="questionform" class="btn btn-success btn-block" action="submit" method="post">
                     <!-- ... for each question in the course ... -->
                     {% for lesson in course.lesson_set.all %}
                     {% for question in lesson.question_set.all %}
