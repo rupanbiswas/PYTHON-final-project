@@ -117,7 +117,7 @@ def submit(request, course_id):
     for item in choices:
         submission.choices.add(item)
     submission.save()
-    return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(course_id, submission_id)))
+    return HttpResponseRedirect(reverse(viewname='onlinecourse:exam_result', args=(course_id, submission.id)))
 
 
 
@@ -158,7 +158,7 @@ def show_exam_result(request, course_id, submission_id):
     course = Course.objects.get(pk = course_id)
     submission = Submission.objects.get(pk = submission_id)
     selected = Submission.objects.filter(id = submission_id).values_list('choices',flat = True)
-    score = len(submission.choices.all().filter(iscorrect=True))
+    score = len(submission.choices.all().filter(is_correct=True))
 
     # choices = submission.choices.all()
     # learner_score = 0
